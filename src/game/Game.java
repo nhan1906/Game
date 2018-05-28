@@ -5,17 +5,38 @@
  */
 package game;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
+
 /**
  *
  * @author James
+ * Màn hình game
  */
-public class Game {
+public class Game extends JFrame {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    private JPanel gm = new JPanel();
+    
+    //Constructor khởi tạo màn hình
+    public Game(){
+        
+    }
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+        // Chạy nhạc nền ở đây
+        //Lấy đường dẫn đến file
+        InputStream is = new FileInputStream(new File("./audios/music_background.wav"));
+        //Thay bằng API mới
+        AudioStream as = new AudioStream(is);
+        AudioPlayer.player.start(as);
+        new Game();
+        
     }
     
 }
